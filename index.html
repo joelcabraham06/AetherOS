@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AetherOS - Live Real-Time Web Operating System & Kernel Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Live Wallpaper -->
+    <div id="desktop-wallpaper"></div>
+
+    <!-- Desktop Icons Grid -->
+    <div id="desktop-grid">
+        <div class="desktop-icon" onclick="AetherApps.openTerminal(window.wm, window.shell)">
+            <span class="icon">💻</span>
+            <span>Terminal</span>
+        </div>
+        <div class="desktop-icon" onclick="AetherApps.openExplorer(window.wm, window.kernel)">
+            <span class="icon">📂</span>
+            <span>Explorer</span>
+        </div>
+        <div class="desktop-icon" onclick="AetherApps.openResourceMonitor(window.wm, window.kernel)">
+            <span class="icon">📊</span>
+            <span>Monitor</span>
+        </div>
+        <div class="desktop-icon" onclick="AetherApps.openSchedulerSim(window.wm, window.kernel)">
+            <span class="icon">⚡</span>
+            <span>CPU Scheduler</span>
+        </div>
+        <div class="desktop-icon" onclick="AetherApps.openTextEditor(window.wm, window.kernel)">
+            <span class="icon">📝</span>
+            <span>Notepad</span>
+        </div>
+        <div class="desktop-icon" onclick="AetherApps.openSettings(window.wm, window.kernel)">
+            <span class="icon">⚙️</span>
+            <span>Settings</span>
+        </div>
+    </div>
+
+    <!-- Windows Layer -->
+    <div id="windows-container"></div>
+
+    <!-- Start Menu -->
+    <div id="start-menu">
+        <div class="start-header">⚡ AetherOS Start Menu</div>
+        <div class="start-item" onclick="AetherApps.openTerminal(window.wm, window.shell); toggleStartMenu();">
+            <span>💻</span> Terminal CLI
+        </div>
+        <div class="start-item" onclick="AetherApps.openExplorer(window.wm, window.kernel); toggleStartMenu();">
+            <span>📂</span> File Explorer
+        </div>
+        <div class="start-item" onclick="AetherApps.openResourceMonitor(window.wm, window.kernel); toggleStartMenu();">
+            <span>📊</span> System Monitor
+        </div>
+        <div class="start-item" onclick="AetherApps.openSchedulerSim(window.wm, window.kernel); toggleStartMenu();">
+            <span>⚡</span> CPU Scheduler Simulator
+        </div>
+        <div class="start-item" onclick="AetherApps.openTextEditor(window.wm, window.kernel); toggleStartMenu();">
+            <span>📝</span> Text Editor
+        </div>
+        <div class="start-item" onclick="AetherApps.openSettings(window.wm, window.kernel); toggleStartMenu();">
+            <span>⚙️</span> System Settings
+        </div>
+    </div>
+
+    <!-- Bottom Taskbar -->
+    <div id="taskbar">
+        <button id="start-btn" onclick="toggleStartMenu()">
+            <span>⚡</span> <b>Start</b>
+        </button>
+
+        <div id="taskbar-apps"></div>
+
+        <div id="system-tray">
+            <span>🧠 RAM: <b id="tray-ram">12%</b></span>
+            <span>⏱️ <span id="tray-clock">12:00:00 PM</span></span>
+        </div>
+    </div>
+
+    <!-- Core Scripts -->
+    <script src="core/vfs.js"></script>
+    <script src="core/memory.js"></script>
+    <script src="core/scheduler.js"></script>
+    <script src="core/kernel.js"></script>
+    <script src="core/shell.js"></script>
+    <script src="gui/window_manager.js"></script>
+    <script src="apps/desktop_apps.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
